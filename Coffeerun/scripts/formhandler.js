@@ -53,14 +53,13 @@
     };
 
     FormHandler.prototype.addInputCoffeeHandler = function(fn) {
-        console.log('Setting input handler for form');
-        this.$formElement.on('input', '[name="coffee"]', function(event) {
-            var coffee1 = event.target.value;
-            //var strength = event.target.value;
+        //console.log('Setting input handler for form');
+        this.$formElement.on('change',  function(event) {
+            event.preventDefault();
+            var coffee1 = $('#coffeeOrder').val();
+            var str = $('#strengthLevel').val();
             var message = '';
-            if (fn(coffee1)) {
-                event.target.setCustomValidity('');
-            } else {
+            if ((!fn(coffee1, str))) {
                 message = coffee1 + ' is not a good coffee!'
                 event.target.setCustomValidity(message);
             }

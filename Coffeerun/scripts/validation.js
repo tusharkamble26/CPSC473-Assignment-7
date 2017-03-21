@@ -3,17 +3,18 @@
     var App = window.App || {};
     var Validation = {
 
-      /*    isCompanyEmail: function(emailInput) {
-              return /.+@bignerdranch\.com$/.test(emailInput);
+        isCompanyEmail: function(emailInput) {
+            return /.+@bignerdranch\.com$/.test(emailInput);
 
-          }
-      */
+        },
 
-        isCoffeeDecaf: function(coffeeOrder) {
-            var ee = "decaf"
-            var str= document.getElementById("strengthLevel")
-            return !(ee.match(coffeeOrder) && str>20);
-
+        isCoffeeDecaf: function(coffeeOrder, str) {
+            if (/decaf$/.test(coffeeOrder)) {
+                if (str > 20) {
+                    return false;
+                }
+            }
+            return true;
         }
     };
     App.Validation = Validation;
